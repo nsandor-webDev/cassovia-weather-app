@@ -1,0 +1,19 @@
+<h1>Location</h1>
+
+<form class="search-form" (submit)="getWeather()">
+    <input [(ngModel)]="query" type="text" name="search-input" placeholder="Search city...">
+    <span class="search-icon">
+       
+    </span>
+</form>
+
+<ul class="cities-list">
+    <li *ngFor="let city of cities" >
+        {{ city.name }}
+        <span class="temperature">
+            {{ city.actualTemp }}°C
+        </span>
+    </li>
+</ul>
+
+
