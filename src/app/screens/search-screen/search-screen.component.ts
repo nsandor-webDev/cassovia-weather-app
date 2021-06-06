@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { City } from '../../types/index';
+import { CityService } from '../../services/city.service';
+
 
 @Component({
   selector: 'search-screen',
@@ -8,18 +11,13 @@ import { Component, OnInit } from '@angular/core';
 export class SearchScreenComponent implements OnInit {
 
   query: string = ""
-  cities = [
-    { name: 'Bratislava', actualTemp: 35},
-    { name: 'Humenné', actualTemp: 18},
-    { name: 'Koromľa', actualTemp: 28},
-    { name: 'Košice', actualTemp: 28},
-    { name: 'Michalovce', actualTemp: 16},
-    { name: 'Sobrance', actualTemp: 16}
-  ]
+  cities: City[] = []
+  
 
-  constructor() { }
+  constructor( private cityService: CityService) { }
 
   ngOnInit(): void {
+    this.cities = this.cityService.getCities();
   }
 
   getWeather(): void {

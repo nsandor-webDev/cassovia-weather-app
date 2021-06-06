@@ -63,11 +63,15 @@ search-screen {
 
 main-screen {
     top: 279px;
-    height: 531px;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 24px 0;
 }
 
 search-screen {
+    bottom: 0;
     top: 29px;
-    height: 781px;
-    padding-top: 28px;
+    padding: 28px 19px;
 }
