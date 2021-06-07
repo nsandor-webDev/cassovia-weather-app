@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { City } from '../../types/index';
 import { CityService } from '../../services/city.service';
-import { ActivatedRoute, Router } from '@angular/router';
-
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'search-screen',
   templateUrl: './search-screen.component.html',
@@ -14,7 +12,7 @@ export class SearchScreenComponent implements OnInit {
   query: string = ""
   cities: City[] = []
   
-  constructor( private cityService: CityService, private router: Router) { }
+  constructor( private cityService: CityService) { }
 
   ngOnInit(): void {
     this.cities = this.cityService.getCities();
