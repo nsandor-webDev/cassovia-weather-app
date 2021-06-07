@@ -1,15 +1,17 @@
 <h1>Location</h1>
 
 <div class="search">
-    <input [(ngModel)]="query" type="text" name="search-input" placeholder="Search city..." autofocus>
+    <input [(ngModel)]="query" type="text" name="search-input" placeholder="Search city..." autofocus autocomplete="off">
 </div>
 
 <ul class="cities-list">
     <li *ngFor="let city of cities | filter : query" >
-        {{ city.name }}
-        <span>
-            {{ city.actualTemp }}°C
-        </span>
+        <a [routerLink]="['']" [state]="{ name: city.name}">
+            {{ city.name }}
+            <span>
+                {{ city.actualTemp }}°C
+            </span>
+        </a>
     </li>
 </ul>
 

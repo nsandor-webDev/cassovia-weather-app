@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { City } from '../../types/index';
 import { CityService } from '../../services/city.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -14,15 +15,10 @@ export class SearchScreenComponent implements OnInit {
   cities: City[] = []
   
 
-  constructor( private cityService: CityService) { }
+  constructor( private cityService: CityService, private router: Router) { }
 
   ngOnInit(): void {
     this.cities = this.cityService.getCities();
-  }
-
-  getWeather(): void {
-    event?.preventDefault()
-    alert(this.query)
   }
 
 }

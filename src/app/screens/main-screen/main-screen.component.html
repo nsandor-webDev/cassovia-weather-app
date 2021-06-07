@@ -1,76 +1,76 @@
 
-    <div class="panel-header">
+    <div class="panel-header" *ngIf="currentData !=null">
         <div class="date">
-            Wednesday, 08 Act 2020 | 4:30PM
+            {{currentTime | date: 'EEEE, dd LLL yyyy | h:ma'}}
         </div>
         <div class="location">
-            <a routerLink="search">Košice Slovakia</a> <img src="assets/img/map-marker-blue.png" alt="Map marker - Location">
+            <a routerLink="search">{{currentData.name}}, Slovakia</a> <img src="assets/img/map-marker-blue.png" alt="Map marker - Location">
         </div>
     </div>
 
-    <div class="panel-content">
+    <div class="panel-content" *ngIf="currentData !=null">
         <div class="panel-row actual">
             <div class="weather">
                 <i class="wi wi-day-sunny"></i> 
-                <h1>Sunny</h1>
+                <h1>{{currentData.weather[0].main}}</h1>
             </div>
             <div class="temperature">
-                33°C
+                {{currentData.main.temp | number: '1.0-0'}}°C
             </div>
             <div class="day-night-temperature">
-                <span>35°C ↑</span>
-                <span>27°C ↓</span>
+                <span>{{currentData.main.temp_max | number: '1.0-0'}}°C ↑</span>
+                <span>{{currentData.main.temp_min | number: '1.0-0'}}°C ↓</span>
             </div>
         </div>
         <div class="panel-row meta-meteo">
             <div class="humidity">
                 <i class="wi wi-humidity"></i>
-                <span class="value">49%</span>
+                <span class="value">{{currentData.main.humidity}}%</span>
                 <span class="meta-title">Humidity</span>
             </div>
             <div class="pressure">
                 <i class="wi wi-barometer"></i>
-                <span class="value">1,007mBar</span>
+                <span class="value">{{currentData.main.pressure}}mBar</span>
                 <span class="meta-title">Pressure</span>
             </div>
             <div class="wind">
                 <i class="wi wi-strong-wind"></i>
-                <span class="value">23 km/h</span>
+                <span class="value">{{currentData.wind.speed | number: '1.0-0'}} km/h</span>
                 <span class="meta-title">Wind</span>
             </div>
         </div>
         <div class="panel-row meta-time">
             <div class="sunrise">
                 <i class="wi wi-sunrise"></i>
-                <span class="value">6:03 AM</span>
+                <span class="value">{{currentData.sys.sunrise | date: 'h:mm a'}}</span>
                 <span class="meta-title">Sunrise</span>
             </div>
             <div class="sunset">
                 <i class="wi wi-sunset"></i>
-                <span class="value">7:05 PM</span>
+                <span class="value">{{currentData.sys.sunset | date: 'h:mm a'}}</span>
                 <span class="meta-title">Sunset</span>
             </div>
             <div class="daytime">
                 <i class="wi wi-time-5"></i>
-                <span class="value">13h 1m</span>
+                <span class="value">{{currentData.dt | date: 'H:m'}}</span>
                 <span class="meta-title">Daytime</span>
             </div>
         </div>
-        <div class="panel-row forecast">
+        <div class="panel-row forecast" *ngIf="forecastData !=null">
             <div>
                 <i class="wi wi-day-sunny"></i>
-                <span class="value">Thu, 09</span>
-                <span class="meta-title">35°C ↑ 20°C ↓</span>
+                <span class="value">{{forecastData[1].dt | date: 'E, dd'}}</span>
+                <span class="meta-title">{{forecastData[1].temp.min | number: '1.0-0'}}°C ↓ {{forecastData[1].temp.max | number: '1.0-0'}}°C ↑</span>
             </div>
             <div>
                 <i class="wi wi-cloudy"></i>
-                <span class="value">Fri, 10</span>
-                <span class="meta-title">35°C ↑ 27°C ↓</span>
+                <span class="value">{{forecastData[2].dt | date: 'E, dd'}}</span>
+                <span class="meta-title">{{forecastData[2].temp.min | number: '1.0-0'}}°C ↓ {{forecastData[2].temp.max | number: '1.0-0'}}°C ↑</span>
             </div>
             <div>
                 <i class="wi wi-windy"></i>
-                <span class="value">Sat- 11</span>
-                <span class="meta-title">34°C ↑ 29°C ↓</span>
+                <span class="value">{{forecastData[3].dt | date: 'E, dd'}}</span>
+                <span class="meta-title">{{forecastData[3].temp.min | number: '1.0-0'}}°C ↓ {{forecastData[3].temp.max | number: '1.0-0'}}°C ↑</span>
             </div>
         </div>
     

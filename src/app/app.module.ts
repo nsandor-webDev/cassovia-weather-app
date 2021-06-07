@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { HttpClientModule } from '@angular/common/http';
 
 // Screen components
 import { MainScreenComponent } from './screens/main-screen/main-screen.component';
@@ -24,7 +25,8 @@ import { TheBackgroundComponent } from './components/the-background/the-backgrou
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

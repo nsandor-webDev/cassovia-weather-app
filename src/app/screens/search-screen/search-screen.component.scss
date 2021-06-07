@@ -40,6 +40,11 @@ h1 {
     padding: 0;
     text-align: left;
     margin: 34px 16px;
+    li a {
+        display: inline-block;
+        width: 100%;
+        cursor: pointer;
+    }
     li {
         position: relative;
         font-size: 18px;
