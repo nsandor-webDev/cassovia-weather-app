@@ -9,7 +9,7 @@
         <a [routerLink]="['']" [state]="{ name: city.name}">
             {{ city.name }}
             <span>
-                {{ city.actualTemp }}°C
+                {{ city.actualTemp | number: '1.0-0'}}°C
             </span>
         </a>
     </li>

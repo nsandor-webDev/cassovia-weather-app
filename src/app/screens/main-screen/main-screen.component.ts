@@ -24,18 +24,16 @@ export class MainScreenComponent implements OnInit {
   
   // get data from open weather API
   private getCityData() {
-    //console.log(this.cityName)
     this.cityService.getCurrentData(this.cityName).subscribe(
       // next()
       (data: any) => {
         this.currentData = data
-        //console.log(data)
       },
       // error()
       (error: any) => {
         console.error(error)
       },
-      // complete()
+      // complete() -> sunset/sunrise date (time) format + getForecast
       () => {
         this.currentData.sys.sunrise = new Date(this.currentData.sys.sunrise*1000);
         this.currentData.sys.sunset = new Date(this.currentData.sys.sunset*1000);
@@ -47,7 +45,6 @@ export class MainScreenComponent implements OnInit {
 
   // get data from open weather API
   private getForecast() {
-    //console.log(this.cityName)
     this.cityService.getForecastData(this.currentData.coord.lat,this.currentData.coord.lon).subscribe(
       // next()
       (data: any) => {
@@ -57,7 +54,7 @@ export class MainScreenComponent implements OnInit {
       (error: any) => {
         console.error(error)
       },
-      // complete
+      // complete -> date (time) format
       () => {
         for (let i = 0; i < this.forecastData.length; i++) {
           const date = new Date(this.forecastData[i].dt*1000);
